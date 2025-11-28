@@ -1,0 +1,5 @@
+# This is the Formula 1 World Drivers Champions Quiz (1.1). 
+On later versions, I'll include an extra option to also guess the WCC from the same year. 
+I'll also add which F1 drivers championships you failed, (as well as constructors). 
+I can do it in reverse, which gives you the year and you have to guess the driver. 
+I'll also make them not repeat after being guessed and I'll add an infinite mode in the future.
