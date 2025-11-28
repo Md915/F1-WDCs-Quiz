@@ -1,0 +1,27 @@
+*#######################*
+*	CHANGELOG	*
+*#######################*
+
+
+v-1.1. @ 27/11/2025 09:39:00 UTC +1 Madrid
+
+- Fixed bug where Alberto Ascari's titles where appearing in the wrong order, which brought confusion.
+
+Plans:
+- Adding an option where the user can select how many iterations (guesses) he wants to do.
+- Adding an optional random iterations mode (from a selected range)
+- Adding an infinite mode, where the user decides when to exit the program.
+- Fixing bugs regarding inputs, to achieve a more user friendly experience.
+
+
+
+v-1.0. @ 26/11/2025 10:23:00 UTC +1 Madrid
+
+- Finally added every driver
+- Fixed modules bug where they would not read properly.
+
+
+
+### Andrés Nicolau Bucur. 1.0 @ 26/11/2025 10:23:00 UTC +1 Madrid
+
+
