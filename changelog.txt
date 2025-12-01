@@ -1,7 +1,14 @@
 *#######################*
-*	CHANGELOG	*
+*	   CHANGELOG  	*
 *#######################*
 
+v-1.2. @ 01/12/2025 09:35:00 UTC +1 Madrid
+
+- Program has been made lighter, by importing just the required functions of each module.
+- I've (successfully) managed to implement an iteration mode where the user chooses how many tries he's done.
+
+Currently working on an infinite mode and a no-repetition mode (drivers won't repeat title after being guessed correctly or wrong (up to the user)).
+See more on ideas.txt
 
 v-1.1. @ 27/11/2025 09:39:00 UTC +1 Madrid
 

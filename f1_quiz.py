@@ -1,15 +1,18 @@
-# This is the Formula 1 World Drivers Champions Quiz (1.1). On later versions, I'll include an extra option to also guess the WCC from the same year. All drivers have been included. I'll also add which F1 drivers championships you failed, (as well as constructors). I can do it in reverse, which gives you the year and you have to guess the driver. I'll also make them not repeat after being guessed and I'll add an infinite mode in the future.
+# This is the Formula 1 World Drivers Champions Quiz (1.1). 
 # Andrés Nicolau Bucur. 1.0 @ 26/11/2025 10:23:00 UTC +1 Madrid
 
-import random
-import time
-import os
+from random import choice
+from time import sleep
+from os import system, name
+
+#def main():
+  
 
 def cls(): #Clear console
-  os.system('cls' if os.name == 'nt' else 'clear')
-time.sleep(1)
+  system('cls' if name == 'nt' else 'clear')
+sleep(1)
 cls()
-time.sleep(1)
+sleep(1)
 drivers = {
   "Max Verstappen":(2021,2022,2023,2024),
   "Lewis Hamilton": (2008, 2014, 2015, 2017, 2018, 2019, 2020),
@@ -50,31 +53,82 @@ drivers = {
 good = 0
 bad = 0
 
+guesses = {}
+
 print("Welcome to the F1 World Drivers' Championships Quiz!")
-time.sleep(2)
+sleep(2)
 print("Your objective is to guess correctly the WDC from the driver and the number of the title (i.e. Max Verstappen's 4th title.)")
-time.sleep(5)
-print("We'll begin in 3, 2, 1...")
-time.sleep(3)
+sleep(1)
+
+
+iterations = input("Before we start, specify the amount of tries you want to do, if you want to do an infinite mode, write 'True': ")
+
+sleep(2)
+print("Perfect, we'll begin in 3, 2, 1...")
+sleep(3)
 print("Go.")
-time.sleep(0.5)
+sleep(0.5)
 cls()
 
-for i in range(100):
-  random_driver, championships = random.choice(list(drivers.items()))
+
+for i in range(int(iterations)):
+  random_driver, championships = choice(list(drivers.items()))
+  random_year = choice(championships)
+  championship_number = championships.index(random_year) + 1  # +1 because indexing starts at 0
+
+  while True:
+    guess = input(f"{random_driver}'s {championship_number}: ")
+    if guess.lower() == 'exit':
+        break
+    try:
+      if int(guess) == random_year:
+        print("Nice.")
+        good +=1
+        break
+      else:
+        print(f"Wrong, it was {random_year}")
+        bad +=1
+        break
+    except ValueError:
+      if guess.lower() == 'exit':
+        break
+      else:
+        print("Wrong format, please try again")
+        continue
+    #main()
+'''
+if type(iterations) is bool:
+  while iterations:
+    random_driver, championships = random.choice(list(drivers.items()))
   random_year = random.choice(championships)
   championship_number = championships.index(random_year) + 1  # +1 because indexing starts at 0
 
+  while True:
+    guess = input(f"{random_driver}'s {championship_number}: ")
+    if guess.lower() == 'exit':
+        break
+    try:
+      if int(guess) == random_year:
+        print("Nice.")
+        good +=1
+        break
+      else:
+        print(f"Wrong, it was {random_year}")
+        bad +=1
+        break
+    except ValueError:
+      if guess.lower() == 'exit':
+        break
+      else:
+        print("Wrong format, please try again")
+        continue
+    #main()
+ 
+'''
+   
+    
 
-  guess = int(input(f"{random_driver}'s {championship_number}: "))
-  if guess == random_year:
-    print("Nice.")
-    good +=1
-  
-  else:
-    print(f"Wrong, it was {random_year}")
-    bad +=1
+
+    
 
 print(f"You've done {good} good guesses and {bad} bad guesses")
-
-  #print(f"{random_driver}'s {championship_number} title was in {random_year}")
