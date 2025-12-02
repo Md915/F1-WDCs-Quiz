@@ -7,6 +7,11 @@ from os import system, name
 
 #def main():
   
+def driver_generator():
+  global random_driver, random_year, championship_number
+  random_driver, championships = choice(list(drivers.items()))
+  random_year = choice(championships)
+  championship_number = championships.index(random_year) + 1  # +1 because indexing starts at 0
 
 def cls(): #Clear console
   system('cls' if name == 'nt' else 'clear')
@@ -53,15 +58,29 @@ drivers = {
 good = 0
 bad = 0
 
-guesses = {}
+wrong_guesses = {}
 
 print("Welcome to the F1 World Drivers' Championships Quiz!")
 sleep(2)
 print("Your objective is to guess correctly the WDC from the driver and the number of the title (i.e. Max Verstappen's 4th title.)")
-sleep(1)
+sleep(2)
 
 
-iterations = input("Before we start, specify the amount of tries you want to do, if you want to do an infinite mode, write 'True': ")
+iterations = input("Before we start, specify the amount of tries you want to do, if you want to do an infinite mode, write 'True', 'infinite' or 'inf': ").strip().lower()
+
+while True:
+  if iterations in ('true', 'infinite', 'inf'):
+    iterations = True
+    break
+  else:
+    try:
+      iterations = int(float(iterations))  # converts float to int
+      if iterations > 0:
+        break
+      else:
+        iterations = input("Please enter a positive number or 'True', 'infinite' or 'inf' for infinite mode: ").strip().lower()
+    except ValueError:
+      iterations = input("I didn't catch that, please specify the amount of tries you want to do, if you want to do an infinite mode, write 'True': ").strip().lower()
 
 sleep(2)
 print("Perfect, we'll begin in 3, 2, 1...")
@@ -70,65 +89,66 @@ print("Go.")
 sleep(0.5)
 cls()
 
+guess = ""
 
-for i in range(int(iterations)):
-  random_driver, championships = choice(list(drivers.items()))
-  random_year = choice(championships)
-  championship_number = championships.index(random_year) + 1  # +1 because indexing starts at 0
-
+if iterations is True:
+  print("Infinite mode enabled. Type 'exit' to exit the program.")
   while True:
-    guess = input(f"{random_driver}'s {championship_number}: ")
-    if guess.lower() == 'exit':
-        break
-    try:
-      if int(guess) == random_year:
-        print("Nice.")
-        good +=1
-        break
-      else:
-        print(f"Wrong, it was {random_year}")
-        bad +=1
-        break
-    except ValueError:
+    driver_generator()
+    if guess == "exit":
+      break
+    while True:
+      guess = input(f"{random_driver}'s {championship_number}: ")
       if guess.lower() == 'exit':
-        break
-      else:
-        print("Wrong format, please try again")
-        continue
-    #main()
-'''
-if type(iterations) is bool:
-  while iterations:
-    random_driver, championships = random.choice(list(drivers.items()))
-  random_year = random.choice(championships)
-  championship_number = championships.index(random_year) + 1  # +1 because indexing starts at 0
+          guess = "exit"
+          break
+      try:
+        if int(guess) == random_year:
+          print("Nice.")
+          good +=1
+          break
+        else:
+          print(f"Wrong, it was {random_year}")
+          bad += 1
+          # record wrong guess: store a list of (championship_number, year) for each driver
+          wrong_guesses.setdefault(random_driver, []).append((championship_number, random_year))
+          break
+      except ValueError:
+        if guess.lower() == 'exit':
+          break
+        else:
+          print("Wrong format, please try again")
+          continue
+      #main()
 
-  while True:
-    guess = input(f"{random_driver}'s {championship_number}: ")
-    if guess.lower() == 'exit':
-        break
-    try:
-      if int(guess) == random_year:
-        print("Nice.")
-        good +=1
-        break
-      else:
-        print(f"Wrong, it was {random_year}")
-        bad +=1
-        break
-    except ValueError:
+
+elif isinstance(iterations, int):
+  guess = ""
+  for i in range(iterations):
+    driver_generator()
+  
+    while True:
       if guess.lower() == 'exit':
-        break
-      else:
-        print("Wrong format, please try again")
-        continue
-    #main()
- 
-'''
-   
-    
+          break
+      guess = input(f"{random_driver}'s {championship_number}: ")
+      try:
+        if int(guess) == random_year:
+          print("Nice.")
+          good +=1
+          break
+        else:
+          print(f"Wrong, it was {random_year}")
+          bad += 1
+          # record wrong guess: store a list of (championship_number, year) for each driver
+          wrong_guesses.setdefault(random_driver, []).append((championship_number, random_year))
+          break
+      except ValueError:
+        if guess.lower() == 'exit':
+          break
+        else:
+          print("Wrong format, please try again")
+          continue
+      #main()
 
-
-    
 
 print(f"You've done {good} good guesses and {bad} bad guesses")
