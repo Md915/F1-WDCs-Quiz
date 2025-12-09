@@ -1,11 +1,6 @@
-# This is the Formula 1 World Drivers Champions Quiz (1.1). 
-# Andrés Nicolau Bucur. 1.0 @ 26/11/2025 10:23:00 UTC +1 Madrid
-
 from random import choice
 from time import sleep
 from os import system, name
-
-#def main():
   
 def driver_generator():
   global random_driver, random_year, championship_number
@@ -15,10 +10,13 @@ def driver_generator():
 
 def cls(): #Clear console
   system('cls' if name == 'nt' else 'clear')
+
 sleep(1)
 cls()
 sleep(1)
+
 drivers = {
+  "Lando Norris": (2025,),
   "Max Verstappen":(2021,2022,2023,2024),
   "Lewis Hamilton": (2008, 2014, 2015, 2017, 2018, 2019, 2020),
   "Nico Rosberg": (2016,),
@@ -119,8 +117,6 @@ if iterations is True:
         else:
           print("Wrong format, please try again")
           continue
-      #main()
-
 
 elif isinstance(iterations, int):
   guess = ""
@@ -148,7 +144,5 @@ elif isinstance(iterations, int):
         else:
           print("Wrong format, please try again")
           continue
-      #main()
 
-
-print(f"You've done {good} good guesses and {bad} bad guesses")
+print(f"You've done {good} good guesses and {bad} bad guesses.")
