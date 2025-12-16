@@ -2,6 +2,19 @@
 *	   CHANGELOG  	*
 *#######################*
 
+v-1.5. @ 1612/2025 11:30:00 UTC +1 Madrid
+
+- Code has been optimised to be more responsive to the user's actions, making it simpler to execute and easier for the user to do stuff. 
+- Added an option to exit the program long before entering (on first prompt).
+- Added both a Constructors list and a Chassis list, which are yet to be implemented into the program, that'll fall on the user's choice. 
+
+note to self: this is the 3rd changelog where I'm yet to add the option to make drivers not repeat after being guessed inside infinite mode (and probably make it a permanent option in the main mode (BY DEFAULT))
+
+Currently working on a no-repetition mode (drivers won't repeat title after being guessed correctly or wrong (up to the user)).
+Working on a mode to make the drivers not repeat themselves on any mode (user choice) if they've been already guessed, after 76 iterations, the program will ask them again.
+See more on ideas.txt
+
+
 v-1.4. @ 09/12/2025 10:20:00 UTC +1 Madrid
 
 - With the recent addition of Lando Norris as a Formula 1 World Champion, the program has been updated to include him on it. This means there's a chance you are now asked to guess him.

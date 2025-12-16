@@ -1,4 +1,4 @@
-# This is the Formula 1 World Drivers Champions Quiz (1.3). 
+# This is the Formula 1 World Drivers Champions Quiz (1.5). 
 
 My plans for thr program in the future:
 - Working UI (long term).
@@ -6,3 +6,4 @@ My plans for thr program in the future:
 - I'll also add which F1 drivers championships you failed, (as well as constructors). 
 - Instead of being asked the driver's title by name and number, asking directly the year (the user can decide which one to go for). 
 - I'll also make them not repeat after being guessed (user choice).
+- The user can choose to be asked a series of combinations, including the driver who won on X year with Y chassis, the chassis that won that year (or viceversa), the constructor who won on X year or given X year the constructor who won, and all possible combinations I can think of. 
