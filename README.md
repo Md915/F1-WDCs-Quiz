@@ -1,4 +1,4 @@
-# F1-WDCs-Quiz
+# F1-WDCs-Quiz (WILL UPDATE AFTER NOVEMBER 17 2026)
 This is a simple program where you're asked about the F1 World Drivers' Championships by name and title number. New options will come in new releases.  
 
 It's version sits currently at 1.5. At the moment, it works on the terminal.
