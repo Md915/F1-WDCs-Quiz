@@ -11,4 +11,3 @@ When making a guess, your answer must be written with the whole number year (199
 
 Infinite mode now works properly, feel free to try it. New functions will come to it in the future (see more on ideas.txt).
 
-PS. Slowly  but surely I'm learning to use GitHub, I am too scared to do it through Git (the cool way).
